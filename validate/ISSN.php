@@ -14,7 +14,9 @@
         $sum = NULL;
         for( $i = 1; $i < $length; $i++ )
           $sum+= ( 8 - ( $i - 1 ) ) * $ISSN[( $i - 1 )];
-        $sum = 11 - $sum % 11;
+        $sum = $sum % 11;
+        if ($sum === 0) $sum = 11;
+        $sum = 11 - $sum;
         return $sum === $checksum;
       }
       return FALSE;
